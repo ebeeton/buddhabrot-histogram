@@ -7,8 +7,14 @@ def main():
     with open('counter.txt') as f:
         data = [int(line.strip()) for line in f]
 
+    minVal = min(data)
+    maxVal = max(data)
+
+    print(f'Min: {minVal} Max: {maxVal}')
+
     counts = pd.Series(data)
-    counts.plot.hist(grid=True, bins=50, rwidth=0.9, color='#4287f5')
+    counts.plot.hist(grid=True, bins=50, color='#b434eb',
+                     range=[minVal, maxVal])
     plt.savefig('histogram')
 
 if __name__ == '__main__':
